@@ -465,7 +465,8 @@ class ActiveRecordBase
             }
             return call_user_func_array(array($this, "find"), array_merge($arg, $args));
         }
-        $model = ereg_replace("^get", "", $method);
+        $model = preg_replace("/^get/", "", $method);
+		
         $mmodel = Util::uncamelize($model);
         if (array_key_exists($mmodel, $this->_belongs_to)) {
             $has_relation = true;
@@ -2272,9 +2273,9 @@ class ActiveRecordBase
     {
         $sql_item = trim($sql_item);
         if ($sql_item !== '' && $sql_item !== null) {
-            $sql_item = ereg_replace("[ ]+", "", $sql_item);
-            if (!ereg("^[a-zA-Z0-9_\.]+$", $sql_item)) {
-                throw new ActiveRecordException("Se esta tratando de ejecutar una operacion maliciosa!");
+            $sql_item = preg_replace("/[ ]+/", "", $sql_item);
+            if (!preg_match("/^[a-zA-Z0-9_\.]+$/", $sql_item)) {
+                throw new ActiveRecordException("Se esta tratando de ejecutar una operacion maliciosa!".$sql_item);
             }
         }
         return $sql_item;
@@ -2289,8 +2290,8 @@ class ActiveRecordBase
    	{
         $sql_item = trim($sql_item);
         if ($sql_item !== '' && $sql_item !== null) {
-            $sql_item = ereg_replace("[ ]+", "", $sql_item);
-            if (!ereg("^[a-zA-Z_0-9\,\(\)\.\*]+$", $sql_item)) {
+            $sql_item = preg_replace("/[ ]+/", "", $sql_item);
+            if (!preg_match("/^[a-zA-Z_0-9\,\(\)\.\*]+$/", $sql_item)) {
                 throw new ActiveRecordException("Se esta tratando de ejecutar una operacion maliciosa!");
             }
         }

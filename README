@@ -1,0 +1,20 @@
+*** Version 0.0 ***
+# 15/06/2011 Framework KumbiaPHP Spirit 1.0b1 Original
+
+*** Version 0.1 ***
+# 20/06/2011 Integracion: Framework JQuery 1.4.2.
+# 24/06/2011 Integracion: Plugin JQuery UI 1.8.13.
+# 22/06/2011 Integracion: Plugin JQuery Forms, para el envio de formularios con Ajax.
+# 22/06/2011 Integracion: Plugin JQuery Form Validate, para la validacion de formularios.
+
+# 17/06/2011 Libreria: Clase Formato.
+# 18/06/2011 Libreria: Clase Html.
+# 23/06/2011 Libreria: Clase Formulario.
+# 21/06/2011 Libreria: Clase Ajax.
+
+# 16/06/2011 Mantenimiento: Modificaciones al helpers.php, en link_to y img_tag para que puedan aceptar links o imagenes externas.
+# 21/06/2011 Mantenimiento: Modificaciones al view.php para ayudar al problema del ISO-8859-1.
+# 29/06/2011 Mantenimiento: Modificaciones al active_record_base.php para mejorar la compatibilidad con Php5.3. ereg y ereg_replace.
+# 30/06/2011 Mantenimiento: Modificaciones al model_base.php agregando nuevos metodos que seran agregados a todos los modelos.
+
+# 25/06/2011 Ejemplos: Probando la funcionalidad de la version.

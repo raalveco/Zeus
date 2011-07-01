@@ -431,7 +431,8 @@ class Acl {
 		/*foreach($this->access[$role] as ){
 
 		}*/
-
+        if(!isset($this->access[$role][$resource][$access_list])) return false;
+        if($this->access[$role][$resource][$access_list] == "A") return true;
     }
 
 	/**

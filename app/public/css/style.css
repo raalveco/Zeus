@@ -1,44 +1,84 @@
-/* Formatea los mensajes de KumbiaPHP */
-.notice_message, .success_message, .warning_message, .error_message, .validation_message {
-	border: 1px solid;
-	margin: 1px 0;
-	padding:3px 10px 3px 50px;
+/* Implements All Control Buttons */
+.controlButton {
+
+}
+.requerido{
+	color: #F00;
+}
+
+/* Cambia el Estilo las opciones de reportes en StandardForm */
+.report_options {
+	background: #F2F2F2;
+	border: 1px solid #969696;
+}
+
+/* Formatea los mensajes de Kumbia */
+.flash_show {
+	width: 95%;
+	font-weight: bold;
+	margin: 0 auto;
+	padding: 2px 25px;
 	background-repeat: no-repeat;
-	background-position: 10px center;
+	background-position: 5px center;
+	text-align: left;
 }
 
 .error_message {
-	color: #D8000C;
-	background-color: #FFBABA;
-	background-image: url('../img/default/error.png');
+	background-image: url("@path/img/error.gif");
+	background-color: #FDD;
+  	color: #B30000;
+  	border: 1px solid #FFB7B7;
+  	margin: 2px;
 }
 
 .notice_message {
-	color: #00529B;
-	background-color: #BDE5F8;
-	background-image: url('../img/default/info.png');
+	background-image: url("@path/img/user.gif");
+	background-color: #CCDEFF;
+  	color: #004A6F;
+  	border: 1px solid #004A6F;
 }
 
 .success_message {
-	color: #4F8A10;
-	background-color: #DFF2BF;
-	background-image:url('../img/default/valid.png');
+	background-image: url("@path/img/ok.gif");
+	background-color: #CF9;
+  	color: #008000;
+  	border: 1px solid #008000;
 }
 
 .warning_message {
-	color: #9F6000;
-	background-color: #FEEFB3;
-	background-image: url('../img/default/warning.png');
+	background-image: url("@path/img/warning.gif");
+	background-color: #FFFFC6;
+  	border: 1px solid #DD0;
+	color: #000;
 }
 
-.validation_message {
-	color: #D63301;
-	background-color: #FFCCBA;
-	background-image: url('../img/default/warning.png');
+.interactive_message {
+	background-image: url("@path/img/warning.gif");
+	background-color: #DDE;
+	border: 1px solid #8080C0;
+	color: #000;
 }
 
 .highlight {
 	background: #FFFFDF;
+}
+
+
+/* Cambia los colores del Browse en StandardForm */
+.browse_primary {
+	background: #AEB9FF;
+}
+
+.browse_primary_active {
+	background: #AEB9FF;
+}
+
+.browse_secondary {
+	background: #FFF;
+}
+
+.browse_secondary_active {
+	background: #F2F2F2;
 }
 
 div.autocomplete {
@@ -63,4 +103,12 @@ div.autocomplete ul li {
       padding: 1px;
       cursor: pointer;
       font-size: 10px;
+}
+
+td, div {
+	font-family: "Verdana";
+}
+
+body.template {
+	background-color: #676767;
 }

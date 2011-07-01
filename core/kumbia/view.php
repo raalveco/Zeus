@@ -120,7 +120,13 @@ class View
 			ob_end_flush();
 			return;
 		}
-		echo self::$_content;
+        
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
+            echo utf8_encode(self::$_content);    
+        }
+        else{
+            echo self::$_content;
+        }
 	}
 	/**
 	 * Imprime el contenido del buffer
@@ -128,7 +134,12 @@ class View
 	 */
 	public static function content()
 	{
-		echo self::$_content;
+		if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
+            echo utf8_encode(self::$_content);    
+        }
+        else{
+            echo self::$_content;
+        }
 	}
 	/**
 	 * Renderiza una vista parcial
@@ -168,6 +179,7 @@ class View
                 throw new KumbiaException('Kumbia no puede encontrar la vista parcial: "'.$file.'"', 0);
 			}
 		}
+                
 		include $file;
         if(PRODUCTION && $time) {
             Cache::end();

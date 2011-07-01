@@ -1,0 +1,30 @@
+<?= View::partial("ajax"); ?>
+<?= Load::lib("ajax"); ?>
+
+La Hora Exacta: <div id="hora"><?= date("H:i:s"); ?></div>
+<?= Ajax::actualizador("demos/horaAjax","hora",1000); ?>
+
+<br /><br />
+
+<div id="formulario">Formulario Ajax</div>
+<?= Ajax::formularioInicio("demos/postAjax","formulario"); ?>
+	<input type="text" name="mensaje" />
+	<input type="submit" value="Enviar" />
+<?= Ajax::formularioFin(); ?>
+
+<br /><br />
+
+<div id="ajax"></div>
+<?= Ajax::link("demos/mensajeAjax/Hola Mundo","Link Ajax","ajax"); ?><br />
+<?= Ajax::link("http://www.amecasoft.com.mx/framework/basico/demos/mensajeAjax/Adios","Link Ajax (HTTP)","ajax"); ?><br />
+
+<br /><br />
+
+<div id="toggle">Este texto podrá desaparecer con los links (toggle, hide y show)...</div>
+
+<?= Ajax::toggle("Toggle","toggle"); ?>
+&nbsp;
+<?= Ajax::hide("Ocultar Boton","toggle"); ?>
+&nbsp;
+<?= Ajax::show("Mostrar Boton","toggle"); ?>
+

@@ -32,7 +32,7 @@ function xhtml_start_tag($tag, $attrs=null) {
 	$xw = new xmlWriter();
     $xw->openMemory();
 
-    if(APP_CHARSET != 'UTF-8'){
+    if(APP_CHARSET != 'UTF-8' && APP_CHARSET != 'ISO-8859-1'){
         $params = utf8_encode($params);
     }
 	if(isset($params[1]) && is_array($params[1])) {
@@ -86,7 +86,7 @@ function xhtml_tag($tag, $attrs=null) {
     $xw = new xmlWriter();
     $xw->openMemory();
     
-    if(APP_CHARSET != 'UTF-8'){
+    if(APP_CHARSET != 'UTF-8' && APP_CHARSET != 'ISO-8859-1'){
         $params = utf8_encode($params);
     }
 
@@ -121,8 +121,8 @@ function xhtml_tag($tag, $attrs=null) {
 	}
 	$xw->startElement($tag);
     foreach($attrs as $k=>$v) {
-        if (! is_numeric($k)) {
-            $xw->writeAttribute($k, $v);
+        if (!is_numeric($k)){
+            @$xw->writeAttribute($k, $v);
         }
     }
 	if($content || !in_array($tag, $short_close)) {
@@ -169,7 +169,12 @@ function link_to($action, $text=''){
 		$params[1] = ucwords($text);
 	}
 	
-	$params['href'] = get_kumbia_url($params[0]);
+	if(strpos($params[0],"http://")!==false){
+		$params['href'] = $params[0];
+	}
+	else{
+		$params['href'] = get_kumbia_url($params[0]);
+	}
 	
 	return xhtml_tag('a', $params, "content: {$params[1]}");
 }
@@ -378,7 +383,7 @@ function stylesheet_link_tag($name){
 		$code.=xhtml_tag('link',$params);
 	}
 	Kumbia::$data['KUMBIA_CSS_IMPORTS'][]=$code;
-    return;
+    return $code;
 }
 
 /**
@@ -394,12 +399,19 @@ function stylesheet_link_tag($name){
  */
 function img_tag($img){
 	$params = is_array($img) ? $img : Util::getParams(func_get_args());
-
+	
 	if(!isset($params['src']) && isset($params[0])){
-		$params['src'] = PUBLIC_PATH."img/{$params[0]}";
+		if(strpos($params[0],"http://")!==false){
+			$params['src'] = $params[0];
+		}
+		else{
+			$params['src'] = PUBLIC_PATH."img/{$params[0]}";
+		}
 	}
+	
 	if(!isset($params['alt'])) {
 		$params['alt'] = '';
+		$params['title'] = '';
 	}
 	
 	if(isset($params['drag'])&&$params['drag']) {
@@ -864,7 +876,7 @@ function textarea_tag($name, $value=null){
 	/**
 	 * Obtengo id, name y value
 	 **/
-	$params = array_merge(get_id_and_name($name), $params);	
+	//$params = array_merge(get_id_and_name($name), $params);	
 
 	if(isset($params[1]))
 		$value = $params[1];
