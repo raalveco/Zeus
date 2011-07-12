@@ -23,16 +23,14 @@ class ActiveRecord extends ActiveRecordBase {
 	}
 	
 	//Regresa un arreglo con los registros encontrados en el SQL dado.
-	public static function reporte($sql){
-		$objeto = get_called_class();	
-		$objeto = new $objeto;
-		
-		if($objeto -> count($id)==0){
-			return false;
-		}
-		
-		return $objeto -> find($sql);
-	}
+	public static function reporte($sql="id>0", $orden="id ASC", $inicio=0, $cantidad=0){
+        $objeto = get_called_class();	
+		$objeto = new $objeto;            
+        if($cantidad>0){
+            $sql .= " LIMIT ".$inicio.",".$cantidad;
+        }            
+        return $objeto -> find($sql);
+    }
 	
 	//Regresa el total de registros para un SQL dado.
 	public static function total($sql){
