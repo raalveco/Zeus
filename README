@@ -19,8 +19,7 @@
 
 # 25/06/2011 Ejemplos: Probando la funcionalidad de la version.
 
-*** Version 0.2 - Modulo Usuarios ***
 # 30/06/2011 Mantenimiento: Reparaciones al model_base.php ya que en versiones inferiores a 5.3 no funcionaba.
-# 11/07/2011 Mantenimiento: Reparaciones al model_base.php Ya que la función get_called_class no existe para php 5.2.
+# 11/07/2011 Mantenimiento: Modificaciones al Core, archivo kumbia.php y agregado functions.php que es donde se agrega la get_called_class para versiones inferiores al 5.3.
 
 # 05/07/2011 Helper: Clase Menu. Que contiene la estructura lógica del menu.

@@ -9,11 +9,10 @@
  * @package Db
  * @subpackage ActiveRecord
  */
-class ActiveRecord extends ActiveRecordBase {
-	
+class ActiveRecord extends ActiveRecordBase {	
 	//Regresa un solo registro, por medio de un ID o un SQL dado.
 	public static function consultar($id){
-		$objeto = static::clase();	
+		$objeto = get_called_class();	
 		$objeto = new $objeto;
 		
 		if($objeto -> count($id)==0){
@@ -25,7 +24,7 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa un arreglo con los registros encontrados en el SQL dado.
 	public static function reporte($sql){
-		$objeto = static::clase();	
+		$objeto = get_called_class();	
 		$objeto = new $objeto;
 		
 		if($objeto -> count($id)==0){
@@ -37,7 +36,7 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa el total de registros para un SQL dado.
 	public static function total($sql){
-		$objeto = static::clase();	
+		$objeto = get_called_class();
 		$objeto = new $objeto;
 		
 		if(is_numeric($sql)){
@@ -49,7 +48,7 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa true, si el Id o SQL dado encuentra almenos un registro, sino false
 	public static function existe($id){
-		$objeto = static::clase();	
+		$objeto = get_called_class();
 		$objeto = new $objeto;
 		
 		if($objeto -> count($id)>0){
@@ -70,7 +69,7 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Elimina el registro correspondiente al objeto. No verifica las relaciones que pueda tener.
 	public static function eliminarID($id){
-		$objeto = static::clase();	
+		$objeto = get_called_class();
 		$objeto = new $objeto;
 		
 		if($objeto -> count($id)==0){
@@ -87,3 +86,33 @@ class ActiveRecord extends ActiveRecordBase {
 		$this -> save();
 	}
 }
+
+		if(!function_exists('get_called_class')) {
+	        class class_tools {
+	                static $i = 0;
+	                static $fl = null;
+	
+	                static function get_called_class() {
+	                    $bt = debug_backtrace();
+	
+	                        if (self::$fl == $bt[2]['file'].$bt[2]['line']) {
+	                            self::$i++;
+	                        } else {
+	                            self::$i = 0;
+	                            self::$fl = $bt[2]['file'].$bt[2]['line'];
+	                        }
+	
+	                        $lines = file($bt[2]['file']);
+	
+	                        preg_match_all('/([a-zA-Z0-9\_]+)::'.$bt[2]['function'].'/',
+	                            $lines[$bt[2]['line']-1],
+	                            $matches);
+	
+	                return $matches[1][self::$i];
+	            }
+	        }
+	
+	        function get_called_class() {
+	            return class_tools::get_called_class();
+	        }
+		}

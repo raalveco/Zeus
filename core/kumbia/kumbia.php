@@ -46,6 +46,10 @@ require APP_PATH . 'application.php';
  * @see Router
  */
 require CORE_PATH . 'kumbia/router.php';
+/**
+ * @see Functions
+ */
+require CORE_PATH . 'kumbia/functions.php';
  
 /**
  * Esta es la clase principal del framework, contiene metodos importantes
