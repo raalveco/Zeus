@@ -93,7 +93,7 @@ class Load
     private static function _all_models ($controller, $dir = null)
     {
         foreach (new DirectoryIterator(APP_PATH . "models/$dir") as $file) {
-            if ($file->isDot() || $file->isDir()) {
+            if ($file->isDot() || $file->isDir() || $file->getFilename()=="LEEME.TXT") {
                 continue;
             }
             if ($file->isFile()) {
