@@ -18,3 +18,9 @@
 # 30/06/2011 Mantenimiento: Modificaciones al model_base.php agregando nuevos metodos que seran agregados a todos los modelos.
 
 # 25/06/2011 Ejemplos: Probando la funcionalidad de la version.
+
+*** Version 0.2 - Modulo Usuarios ***
+# 30/06/2011 Mantenimiento: Reparaciones al model_base.php ya que en versiones inferiores a 5.3 no funcionaba.
+# 11/07/2011 Mantenimiento: Reparaciones al model_base.php Ya que la función get_called_class no existe para php 5.2.
+
+# 05/07/2011 Helper: Clase Menu. Que contiene la estructura lógica del menu.

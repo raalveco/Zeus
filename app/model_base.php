@@ -10,13 +10,13 @@
  * @subpackage ActiveRecord
  */
 class ActiveRecord extends ActiveRecordBase {
-		
+	
 	//Regresa un solo registro, por medio de un ID o un SQL dado.
 	public static function consultar($id){
-		$objeto = get_called_class();	
-		$objeto = new $objeto();
+		$objeto = static::clase();	
+		$objeto = new $objeto;
 		
-		if(!$objeto::existe($id)){
+		if($objeto -> count($id)==0){
 			return false;
 		}
 		
@@ -25,10 +25,10 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa un arreglo con los registros encontrados en el SQL dado.
 	public static function reporte($sql){
-		$objeto = get_called_class();	
-		$objeto = new $objeto();
+		$objeto = static::clase();	
+		$objeto = new $objeto;
 		
-		if(!$objeto::existe($sql)){
+		if($objeto -> count($id)==0){
 			return false;
 		}
 		
@@ -37,8 +37,8 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa el total de registros para un SQL dado.
 	public static function total($sql){
-		$objeto = get_called_class();	
-		$objeto = new $objeto();
+		$objeto = static::clase();	
+		$objeto = new $objeto;
 		
 		if(is_numeric($sql)){
 			return $objeto -> count("id=".$sql);	
@@ -49,8 +49,8 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Regresa true, si el Id o SQL dado encuentra almenos un registro, sino false
 	public static function existe($id){
-		$objeto = get_called_class();	
-		$objeto = new $objeto();
+		$objeto = static::clase();	
+		$objeto = new $objeto;
 		
 		if($objeto -> count($id)>0){
 			return true;
@@ -70,14 +70,14 @@ class ActiveRecord extends ActiveRecordBase {
 	
 	//Elimina el registro correspondiente al objeto. No verifica las relaciones que pueda tener.
 	public static function eliminarID($id){
-		$objeto = get_called_class();	
-		$objeto = new $objeto();
+		$objeto = static::clase();	
+		$objeto = new $objeto;
 		
-		if(!$objeto::existe($id)){
+		if($objeto -> count($id)==0){
 			return false;
 		}
 
-		$objeto = $objeto::consultar($id);
+		$objeto = $objeto -> find_first($id);
 				
 		$objeto -> delete();
 	}
