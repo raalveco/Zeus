@@ -23,3 +23,5 @@
 # 11/07/2011 Mantenimiento: Modificaciones al Core, archivo kumbia.php y agregado functions.php que es donde se agrega la get_called_class para versiones inferiores al 5.3.
 
 # 05/07/2011 Helper: Clase Menu. Que contiene la estructura lógica del menu.
+# 14/07/2011 Mantenimiento: Mejoras en la clase Formato, para que convierta a mayusculas y minusculas letras con tildes.
+# 14/07/2011 Mantenimiento: Mejoras en la clase Formato, se agrega la funcion Formato::noTildes($texto), para eliminar tildes a una palabra.

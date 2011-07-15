@@ -62,11 +62,45 @@
         }
 		
 		public static function mayusculas($texto){
+			
+			$texto = str_replace("á","Á",$texto);
+			$texto = str_replace("é","É",$texto);
+			$texto = str_replace("í","Í",$texto);
+			$texto = str_replace("ó","Ó",$texto);
+			$texto = str_replace("ú","Ú",$texto);
+			$texto = str_replace("ñ","Ñ",$texto);
+			
 			return strtoupper($texto);
 		}
 		
 		public static function minusculas($texto){
+			$texto = str_replace("Á","á",$texto);
+			$texto = str_replace("É","é",$texto);
+			$texto = str_replace("Í","í",$texto);
+			$texto = str_replace("Ó","ó",$texto);
+			$texto = str_replace("Ú","ú",$texto);
+			$texto = str_replace("Ñ","ñ",$texto);
+			
 			return strtolower($texto);
+		}
+		
+		public static function noTildes($texto){
+			
+			$texto = str_replace("á","a",$texto);
+			$texto = str_replace("é","e",$texto);
+			$texto = str_replace("í","i",$texto);
+			$texto = str_replace("ó","o",$texto);
+			$texto = str_replace("ú","u",$texto);
+			$texto = str_replace("ñ","n",$texto);
+			
+			$texto = str_replace("Á","A",$texto);
+			$texto = str_replace("É","E",$texto);
+			$texto = str_replace("Í","I",$texto);
+			$texto = str_replace("Ó","O",$texto);
+			$texto = str_replace("Ú","U",$texto);
+			$texto = str_replace("Ñ","N",$texto);
+			
+			return $texto;
 		}
 		
 		public static function capital($texto){
