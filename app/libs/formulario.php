@@ -74,6 +74,25 @@
 
             return submit_tag($params);
         }
+		
+		public static function submitBoton($texto, $color = "neutral", $icono="") {
+			if($icono==""){
+				switch($color){
+					case "neutral": return '<button type="submit">'.$texto.'</button>';
+					case "positivo": return '<button type="submit" class="positive">'.$texto.'</button>';
+					case "negativo": return '<button type="submit" class="negative">'.$texto.'</button>';
+				}	
+			}
+			else{
+				switch($color){
+					case "neutral": return '<button type="submit">'.Html::imagen($icono,$texto)." ".$texto.'</button>';
+					case "positivo": return '<button type="submit" class="positive">'.Html::imagen($icono,$texto)." ".$texto.'</button>';
+					case "negativo": return '<button type="submit" class="negative">'.Html::imagen($icono,$texto)." ".$texto.'</button>';	
+				}
+			}
+			
+			return '<button type="submit" class="negative">'.Html::imagen($icono,$texto)." ".$texto.'</button>';
+		}
         
         public static function imagen($alt, $src){
             $params = is_array($alt) ? $alt : Util::getParams(func_get_args());
@@ -215,8 +234,12 @@
                                 monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
             			        monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
                                 dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                                firstDay: 1,
+                                defaultDate: '-5y',
+                                yearRange: 'c-20:c-0',
                                 changeMonth: true,
 								changeYear: true,
+								
                                 ".($min!==false ? "minDate: -".$min."," : "")."
                                 ".($max!==false ? "maxDate: ".$max."," : "")."
                                 dateFormat: '".$formato."' 
@@ -285,7 +308,7 @@
                 }
             }
             
-            if($bandera) $tmp[""] = "";
+            if($bandera) $tmp[""] = $seleccion;
             
             $params[1] = $tmp;
             
