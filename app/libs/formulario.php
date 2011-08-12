@@ -2,7 +2,7 @@
 	/* Clase Formulario
 	 * Esta clase contiene diferentes metodos que regresan el código html para crear formularios e inputs de manera sencilla.
 	 * 
-	 * Autor: Ramiro Vera
+	 * Autor: Ramiro Vera(raalveco) y Carlos Lizaola(clizaola)
 	 * Company: Amecasoft S.A. de C.V. (México)
 	 * Fecha: 04/06/2011
 	 * 

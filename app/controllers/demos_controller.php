@@ -6,10 +6,16 @@
 			
 		}
 		
+		public function fancybox(){
+				
+		}
+		
 		public function formatos(){
 			$this -> render(null,null);
 			
 			Load::lib("formato");
+			
+			header('Content-type: text/html; charset=iso-8859-1');
 			
 			echo "UTF8: ".Formato::utf8("México")."<br />";
 			echo "Normal: "."México"."<br />";
@@ -67,7 +73,7 @@
 				$this -> set_response("view");
 			}
 			
-			$this -> mensaje = "Hola Mundó";			
+			$this -> mensaje = "Hola Mundo";			
 		}
 	}
 ?>

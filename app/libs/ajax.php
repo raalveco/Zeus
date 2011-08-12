@@ -2,7 +2,7 @@
 	/* Clase Ajax
 	 * Esta clase contiene métodos para aplicar funcionalidades con Ajax
 	 * 
-	 * Autor: Ramiro Vera
+	 * Autor: Ramiro Vera(raalveco) y Carlos Lizaola(clizaola)
 	 * Company: Amecasoft S.A. de C.V. (México)
 	 * Fecha: 04/06/2011
 	 * 

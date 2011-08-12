@@ -169,7 +169,7 @@ function link_to($action, $text=''){
 		$params[1] = ucwords($text);
 	}
 	
-	if(strpos($params[0],"http://")!==false){
+	if(strpos($params[0],"http://")!==false || strpos($params[0],"#")!==false){
 		$params['href'] = $params[0];
 	}
 	else{
