@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+</head>
+<body>
+<div>
+	<p>
+		Diferentes Animaciones
+		<br />
+		<?php Load::lib("fancybox") ?>
+		
+		<?php $fancybox = new Fancybox() ?>
+		<?= $fancybox -> imagen("fancybox/1_b.jpg", "fancybox/1_s.jpg") ?>
+		
+		<?php $fancybox = new Fancybox(array("transitionIn" => "elastic", "transitionOut" => "elastic")) ?>
+		<?= $fancybox -> imagen("fancybox/2_b.jpg", "fancybox/2_s.jpg") ?>
+		
+		<?php $fancybox = new Fancybox(array("transitionIn" => "fade", "transitionOut" => "fade")) ?>
+		<?= $fancybox -> imagen("fancybox/3_b.jpg", "fancybox/3_s.jpg") ?>
+		
+		<?php $fancybox = new Fancybox(array("transitionIn" => "elastic", "transitionOut" => "fade", "speedIn" => 1000, "speedOut" => 1000)) ?>
+		<?= $fancybox -> imagen("fancybox/4_b.jpg", "fancybox/4_s.jpg") ?>
+		
+		<br /><br />
+		Diferentes Posiciones para el Titulo
+		<br />
+		
+		<?php $fancybox = new Fancybox() ?>
+		<?= $fancybox -> imagen("fancybox/5_b.jpg", "fancybox/5_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "outside","overlayColor" => "#000","overlayOpacity" => 1)) ?>
+		<?= $fancybox -> imagen("fancybox/6_b.jpg", "fancybox/6_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "inside","overlayColor" => "#003","overlayOpacity" => 0.5)) ?>
+		<?= $fancybox -> imagen("fancybox/7_b.jpg", "fancybox/7_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "over","overlayColor" => "#300","overlayOpacity" => 0.5)) ?>
+		<?= $fancybox -> imagen("fancybox/8_b.jpg", "fancybox/8_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		
+		<?php $fancybox = new Fancybox(array("modal" => true)) ?>
+		<?= $fancybox -> imagen("fancybox/12_b.jpg", "fancybox/12_s.jpg") ?>
+		
+		<br /><br />
+		Galeria Fotográfica
+		<br />
+		
+		<?php $fancybox = new Fancybox("galeria") ?>
+		<?= $fancybox -> galeria("fancybox/9_b.jpg", "fancybox/9_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		<?= $fancybox -> galeria("fancybox/10_b.jpg", "fancybox/10_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		<?= $fancybox -> galeria("fancybox/11_b.jpg", "fancybox/11_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		<?= $fancybox -> galeria("fancybox/12_b.jpg", "fancybox/12_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ?>
+		
+		<br /><br />
+		
+		<?php $fancybox = new Fancybox("galeria",array("titlePosition" => "over", "transitionIn" => "elastic", "transitionOut" => "elastic","overlayColor" => "#300","overlayOpacity" => 0.5)) ?>
+		<?php for($i=1;$i<=4;$i++){ ?>
+			<?= $fancybox -> galeria("fancybox/".($i)."_b.jpg", "fancybox/".($i)."_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.",50,50) ?>
+			<?= $fancybox -> galeria("fancybox/".($i+4)."_b.jpg", "fancybox/".($i+4)."_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.",50,50) ?>
+			<?= $fancybox -> galeria("fancybox/".($i+8)."_b.jpg", "fancybox/".($i+8)."_s.jpg","Lorem ipsum dolor sit amet, consectetur adipiscing elit.",50,50) ?>
+			<br />
+		<?php } ?>
+		
+		<br /><br />
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "over", "transitionIn" => "elastic", "transitionOut" => "elastic","overlayColor" => "#300","overlayOpacity" => 0.5)) ?>
+		<?= $fancybox -> inline("oculto","Lorem ipsum dolor sit amet", "oculto") ?>
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "over", "transitionIn" => "elastic", "transitionOut" => "elastic","overlayColor" => "#303","overlayOpacity" => 0.5)) ?>
+		<?= $fancybox -> ajax("demos/formatos","ajax") ?>
+		
+		<?php $fancybox = new Fancybox("iframe",array("width" => "75%","height" => "100%","transitionIn" => "none","transitionOut" => "none")) ?>
+		<?= $fancybox -> iframe("http://www.google.com.mx","iframe") ?>
+		
+		<?php $fancybox = new Fancybox(array("titlePosition" => "over", "transitionIn" => "elastic", "transitionOut" => "elastic","overlayColor" => "#303","overlayOpacity" => 0.5)) ?>
+		<?= $fancybox -> swf("http://www.adobe.com/jp/events/cs3_web_edition_tour/swfs/perform.swf","Swf") ?>
+		
+	</p>
+</div>
+<div style="display: none;">
+	<div id="oculto" style="width:500px;height:260px;overflow:auto;">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mi eu elit tempor facilisis id et neque. Nulla sit amet sem sapien. Vestibulum imperdiet porta ante ac ornare. Nulla et lorem eu nibh adipiscing ultricies nec at lacus. Cras laoreet ultricies sem, at blandit mi eleifend aliquam. Nunc enim ipsum, vehicula non pretium varius, cursus ac tortor. Vivamus fringilla congue laoreet. Quisque ultrices sodales orci, quis rhoncus justo auctor in. Phasellus dui eros, bibendum eu feugiat ornare, faucibus eu mi. Nunc aliquet tempus sem, id aliquam diam varius ac. Maecenas nisl nunc, molestie vitae eleifend vel, iaculis sed magna. Aenean tempus lacus vitae orci posuere porttitor eget non felis. Donec lectus elit, aliquam nec eleifend sit amet, vestibulum sed nunc.
+	</div>
+</div>
+</body>
+</html>

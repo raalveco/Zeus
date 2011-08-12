@@ -6,7 +6,7 @@
 			
 		}
 		
-		public function fancybox(){
+		public function fancybox(){ 
 				
 		}
 		
