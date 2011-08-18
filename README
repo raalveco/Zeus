@@ -30,3 +30,4 @@
 # 11/08/2011 Agregada el vendor y libreria al core para el manejo de Zips (PclZip)
 # 11/08/2011 Agregada la opción de crear un backup de la aplicación (Solo archivos, falta Base de Datos)
 # 12/08/2011 Agregado el Plugin de FancyBox para dialogos.
+# 18/08/2011 Agregado el Plugin de JCrop para recortar imagenes.
