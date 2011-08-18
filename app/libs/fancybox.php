@@ -1,6 +1,8 @@
-<?= javascript_include_tag('fancybox/jquery.mousewheel-3.0.4.pack') ?>
-<?= javascript_include_tag('fancybox/jquery.fancybox-1.3.4.pack') ?>
-<?= stylesheet_link_tag('fancybox/jquery.fancybox-1.3.4') ?>
+<?php if (function_exists('javascript_include_tag')) { ?>
+	<?= javascript_include_tag('fancybox/jquery.mousewheel-3.0.4.pack') ?>
+	<?= javascript_include_tag('fancybox/jquery.fancybox-1.3.4.pack') ?>
+	<?= stylesheet_link_tag('fancybox/jquery.fancybox-1.3.4') ?>
+<?php } ?>
 <?php
 	/* Clase FancyBox
 	 * Esta clase contiene métodos para aplicar funcionalidades con Ajax
