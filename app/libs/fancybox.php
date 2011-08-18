@@ -1,4 +1,3 @@
-<?= javascript_include_tag('jquery/jquery-1.4.2.min')."\n" ?>
 <?= javascript_include_tag('fancybox/jquery.mousewheel-3.0.4.pack') ?>
 <?= javascript_include_tag('fancybox/jquery.fancybox-1.3.4.pack') ?>
 <?= stylesheet_link_tag('fancybox/jquery.fancybox-1.3.4') ?>

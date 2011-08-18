@@ -10,6 +10,23 @@
 				
 		}
 		
+		public function jcrop(){
+		}
+		
+		public function jcropear(){
+			$this -> render(null,null);
+			
+			Load::lib("jcrop");
+			
+			$x = $this -> post("x1");
+			$y = $this -> post("y1");
+			$w = $this -> post("w");
+			$h = $this -> post("h");
+			$imagen = $this -> post("imagen");
+			
+			JCrop::cortar($imagen,"miniaturas/".$imagen,$x,$y,$w,$h);
+		}
+		
 		public function formatos(){
 			$this -> render(null,null);
 			

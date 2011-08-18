@@ -1,0 +1,7 @@
+<?php Load::lib("jcrop"); ?>
+<?php Load::lib("formulario"); ?>
+<?= Formulario::inicio("demos/jcropear") ?>
+<?= JCrop::imagen("amecasoft.png","Flores en Primavera") ?>
+<?= Formulario::submit("Aceptar") ?> 
+<?= Formulario::fin() ?>
+<?= JCrop::previa("amecasoft.png","Imagen Previa") ?>
