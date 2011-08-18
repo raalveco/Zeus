@@ -23,9 +23,15 @@
 			$src = APP_PATH."public/img/".$origen;
 			$mini = APP_PATH."public/img/".$destino;
 			
-			echo $src;
+			$ext = substr($src,strlen($src)-3,3);
 			
-			$img_r = imagecreatefromjpeg($src);
+			if($ext == "png"){
+				$img_r = imagecreatefrompng($src);
+			}
+			else{
+				$img_r = imagecreatefromjpeg($src); break;
+			}
+			
 			$dst_r = ImageCreateTrueColor( $wf, $hf );
 			
 			imagecopyresampled($dst_r,$img_r,0,0,$x,$y,$wf,$hf,$w,$h);
