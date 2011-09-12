@@ -17,11 +17,20 @@
 	*/
 	
 	class JCrop{
-		public static function cortar($origen, $destino, $x, $y, $w, $h, $wf = 150, $hf = 150){
+		public static function cortar($origen, $destino, $x, $y, $w, $h, $cuadro= true, $wf = 150, $hf = 150){
 			$jpeg_quality = 100;
 			
 			$src = APP_PATH."public/img/".$origen;
 			$mini = APP_PATH."public/img/".$destino;
+			
+			if(file_exists($mini)){
+				unlink($mini);
+			}
+			
+			if(!$cuadro){
+				$wf = $w;
+				$hf = $h;
+			}
 			
 			$ext = substr($src,strlen($src)-3,3);
 			
@@ -29,7 +38,7 @@
 				$img_r = imagecreatefrompng($src);
 			}
 			else{
-				$img_r = imagecreatefromjpeg($src); break;
+				$img_r = imagecreatefromjpeg($src);
 			}
 			
 			$dst_r = ImageCreateTrueColor( $wf, $hf );
@@ -39,22 +48,22 @@
 			imagejpeg($dst_r,$mini,$jpeg_quality);
 		}
 		
-		public static function imagen($imagen, $alt="", $w=0, $h=0){
+		public static function imagen($imagen, $alt="", $radio = true){
 			$params = is_array($imagen) ? $imagen : Util::getParams(func_get_args());
 			
 			if($alt != "") {
 				$params["alt"] = str_replace(":", "###", $alt);
 				$params["title"] = str_replace(":", "###", $alt);
 			}
-			if($w != "") {
-				$params["width"] = $w;
-			}
-			if($h != "") {
-				$params["height"] = $h;
-			}
 			
 			$params["border"] = "0";
-			$params["id"] = "jcrop";
+			
+			if($radio){
+				$params["id"] = "jcrop";	
+			}
+			else{
+				$params["id"] = "jcropRECTANGULO";
+			}
 			
 			$code = str_replace("###", ":", img_tag($params));
 			

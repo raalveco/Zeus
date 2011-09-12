@@ -9,7 +9,17 @@
 		public function fancybox(){ 
 				
 		}
+
+		public function stars(){
+			
+		}
 		
+		public function votar(){
+			$this -> render(null,null);
+			
+			//CONTABILIZAR VOTO
+		}
+				
 		public function jcrop(){
 		}
 		

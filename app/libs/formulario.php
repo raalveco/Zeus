@@ -185,8 +185,10 @@
             return @numeric_field_tag($params);
         }
         
-        public static function dinero($nombre, $valor=""){
+        public static function dinero($nombre, $valor=0.00){
             $params = is_array($nombre) ? $nombre : Util::getParams(func_get_args());
+            
+            if($valor == "") $valor = 0.00;
             
             $params["value"] = "$ ".number_format($valor,2);
             

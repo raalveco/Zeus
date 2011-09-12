@@ -53,6 +53,16 @@ $config = Config::read('config');
  **/
 define('PRODUCTION', $config['application']['production']);
 
+//Cargar constantes de configuracion Amecasoft
+
+$constantes = Config::read('constantes');
+
+foreach($constantes as $k1 => $v1){
+	foreach($v1 as $k2 => $v2){
+		define($k1."_".$k2, $v2);	
+	}	
+}
+
 /**
  * Carga la cache y verifica si esta cacheado el template, al 
  * estar en produccion

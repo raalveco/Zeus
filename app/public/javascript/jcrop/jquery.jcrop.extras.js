@@ -11,8 +11,21 @@
 	        // Store the API in the jcrop_api variable
 	        jcrop_api = this;
 	    });
+	}); 
+	
+	jQuery(function($){
+ 		$('#jcropRECTANGULO').Jcrop({
+	        onChange: updatePreview,
+	        onSelect: updatePreview
+	      },function(){
+	        // Use the API to get the real image size
+	        var bounds = this.getBounds();
+	        boundx = bounds[0];
+	        boundy = bounds[1];
+	        // Store the API in the jcrop_api variable
+	        jcrop_api = this;
+	    });
 	});
- 
  
  	function showCoords(c)
     {
