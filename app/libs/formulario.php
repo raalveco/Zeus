@@ -296,23 +296,27 @@
             $params = is_array($nombre) ? $nombre : Util::getParams(func_get_args());
             
             $params["selected"] = $seleccion;
-            
             $tmp = array();
             
             $bandera = true;
-            
-            $tmp[""] = "...";
+				
+            if(!isset($params["include_blank"])){
+            	$tmp[""] = "...";
+			}
             
             if($registros) foreach($registros as $registro){
-                $tmp[$registro -> {$valor}] = $registro -> {$opcion};
+                $tmp[$registro -> {$valor}] = $nombre == "profesor" || $nombre == "alumno" ? $registro -> nombre_completo : $registro -> {$opcion};
                 if($seleccion == $registro -> {$valor} && $seleccion != 0){
                     $bandera = false;
                 }
             }
             
-            if($bandera) $tmp[""] = $seleccion;
+			if(!isset($params["include_blank"])){
+				if($bandera) $tmp[""] = $seleccion;
+            }
+			
+			$params[1] = $tmp;
             
-            $params[1] = $tmp;
             
             return select_tag($params);
         }
