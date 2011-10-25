@@ -28,10 +28,10 @@ abstract class Flash {
 	 * @param string $name	Para tipo de mensaje y para CSS class='$name'.
 	 * @param string $msg 	Mensaje a mostrar
 	 */
-	public static function show($name,$msg)
+	public static function show($name,$msg, $img)
 	{
 		if(isset($_SERVER['SERVER_SOFTWARE'])){
-    			echo '<div class="' , $name , '">' , $msg , '</div>' , "\n";
+    			echo '<div class="' , $name , '"><table><tr><td style="padding: 5px;"><img src="', PUBLIC_PATH ,'img/default/',$img,'"></td><td>' , $msg , '</td></table></div>' , "\n";
 		} else {
 			echo $name , '*** ' , strip_tags($msg) , "\n";
 		}
@@ -44,7 +44,7 @@ abstract class Flash {
 	 */
 	public static function error($err)
 	{     
-		return self::show('error_message',$err);
+		return self::show('error_message',$err, "error.png");
 	}
 
 	/**
@@ -64,7 +64,7 @@ abstract class Flash {
 	 */
 	public static function notice($msg)
 	{
-		return self::show('notice_message',$msg);
+		return self::show('notice_message',$msg, "info.png");
 	}
 
 	/**
@@ -74,7 +74,7 @@ abstract class Flash {
 	 */
 	public static function success($msg)
 	{
-		return self::show('success_message',$msg);
+		return self::show('success_message',$msg, "valid.png");
 	}
 
 	/**
@@ -84,7 +84,7 @@ abstract class Flash {
 	 */
 	public static function warning($msg)
 	{
-		return self::show('warning_message',$msg);
+		return self::show('warning_message',$msg, "warning.png");
 	}
 
 	/**
@@ -94,7 +94,7 @@ abstract class Flash {
 	 */
 	public static function interactive($msg)
 	{
-		return self::show('interactive_message',$msg);
+		return self::show('interactive_message',$msg, "info.png");
 	}
 
 	/**

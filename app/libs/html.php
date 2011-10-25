@@ -28,9 +28,44 @@
 			$params["class"] = "jsRemote";
 			return  link_to($params);
 		}
+		
+		public static function linkAjaxConfirmado($accion, $text, $contenedor){
+            $params = is_array($accion) ? $accion : Util::getParams(func_get_args());
+            
+            //$params["onclick"] = "return confirm('".$mensaje."');";
+            $params["rel"] = "#".$contenedor;
+            $params["class"] = "jsRemoteEliminar";
+            
+            $controlador = substr($accion,0,strpos($accion,"/"));
+            $acciontmp = substr($accion,strpos($accion,"/")+1);
+            
+            if(strpos($acciontmp,"/")!==false){
+            	$acciontmp = substr($acciontmp,0,strpos($acciontmp,"/"));
+            }
+            
+            return link_to($params);
+        }
 	
 		public static function imagen($imagen, $alt="", $w=0, $h=0) {
 			$params = is_array($imagen) ? $imagen : Util::getParams(func_get_args());
+			
+			if($alt != "") {
+				$params["alt"] = str_replace(":", "###", $alt);
+				$params["title"] = str_replace(":", "###", $alt);
+			}
+			if($w != "") {
+				$params["width"] = $w;
+			}
+			if($h != "") {
+				$params["height"] = $h;
+			}
+			$params["border"] = "0";
+			
+			return  str_replace("###", ":", img_tag($params));
+		}
+		
+		public static function mapaGoogle($x, $y, $zoom = 15, $alt="", $w=400, $h=400) {
+			$params["src"] = 'http://maps.google.com/maps/api/staticmap?center='.$x.','.$y.'&zoom='.$zoom.'&size='.$w.'x'.$h.'&sensor=false&markers=color:red|'.$x.','.$y.'';
 			
 			if($alt != "") {
 				$params["alt"] = str_replace(":", "###", $alt);
